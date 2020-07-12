@@ -1,0 +1,7 @@
+{
+  "name": "personal-book-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
