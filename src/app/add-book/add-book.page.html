@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Add a book
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="take-picture-border row">
+    <div class="take-picture-content">
+      <ion-button color="medium">Take picture</ion-button>
+    </div>
+  </div>
+
+  <ion-item>
+    <ion-label>Name <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-input required type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Status <ion-text color="danger">*</ion-text>
+    </ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]="status">
+      <ion-select-option value="completed">Completed</ion-select-option>
+      <ion-select-option value="currently_reading">Currently reading</ion-select-option>
+      <ion-select-option value="to_be_read">To be read</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="status === 'completed' || status === 'currently_reading'">
+    <ion-label>Started on</ion-label>
+    <ion-datetime placeholder="Select date"></ion-datetime>
+  </ion-item>
+  
+  <ion-item *ngIf="status === 'completed'">
+    <ion-label>Completed on</ion-label>
+    <ion-datetime placeholder="Select date"></ion-datetime>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block">Done</ion-button>
+</ion-footer>
