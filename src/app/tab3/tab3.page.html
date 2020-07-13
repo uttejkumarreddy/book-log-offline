@@ -16,15 +16,16 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
-        <ion-img src="{{ photo.base64 ? photo.base64 : photo.webviewPath }}"
-          (click)="showActionSheet(photo, position)">
-        </ion-img>
+        <ion-card (click)="showActionSheet(photo, position)">
+          <ion-img src="{{ photo.base64 ? photo.base64 : photo.webviewPath }}"></ion-img>
+          <ion-card-content class="wrap-text-two-lines" color="dark"></ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addPhotoToGallery()">
+    <ion-fab-button [routerLink]="['/add-book']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

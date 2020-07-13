@@ -1,0 +1,10 @@
+.wrap-text-two-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-height: 16px;
+  max-height: 48px;
+  -webkit-box-orient: vertical;
+  padding: 0.2em;
+}
