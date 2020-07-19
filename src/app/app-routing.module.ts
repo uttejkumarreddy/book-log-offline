@@ -7,8 +7,12 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'add-book',
+    path: 'add-book/:status',
     loadChildren: () => import('./add-book/add-book.module').then( m => m.AddBookPageModule)
+  },
+  {
+    path: 'book/:position',
+    loadChildren: () => import('./book/book.module').then( m => m.BookPageModule)
   }
 ];
 @NgModule({
