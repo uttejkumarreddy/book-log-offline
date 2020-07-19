@@ -1,50 +1,53 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Add a book
+      New book
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <div class="take-picture-border row">
-    <div class="take-picture-content">
-      <ion-button color="medium">Take picture</ion-button>
-    </div>
-  </div>
-
   <ion-item>
     <ion-label>Name <ion-text color="danger">*</ion-text>
     </ion-label>
-    <ion-input required type="text"></ion-input>
+    <ion-input required type="text" [(ngModel)]="book.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Author </ion-label>
+    <ion-input type="text" [(ngModel)]="book.author"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Status <ion-text color="danger">*</ion-text>
     </ion-label>
-    <ion-select placeholder="Select One" [(ngModel)]="status">
-      <ion-select-option value="completed">Completed</ion-select-option>
-      <ion-select-option value="currently_reading">Currently reading</ion-select-option>
-      <ion-select-option value="to_be_read">To be read</ion-select-option>
+    <ion-select placeholder="Select One" [(ngModel)]="book.status">
+      <ion-select-option value="past">Past</ion-select-option>
+      <ion-select-option value="present">Present</ion-select-option>
+      <ion-select-option value="future">Future</ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-item *ngIf="status === 'completed' || status === 'currently_reading'">
+  <ion-item *ngIf="book.status === 'past' || book.status === 'present'">
     <ion-label>Started on</ion-label>
-    <ion-datetime placeholder="Select date"></ion-datetime>
+    <ion-datetime placeholder="Select date" [(ngModel)]="book.started"></ion-datetime>
   </ion-item>
-  
-  <ion-item *ngIf="status === 'completed'">
+
+  <ion-item *ngIf="book.status === 'past'">
     <ion-label>Completed on</ion-label>
-    <ion-datetime placeholder="Select date"></ion-datetime>
+    <ion-datetime placeholder="Select date" [(ngModel)]="book.ended"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Notes </ion-label>
+    <ion-textarea [(ngModel)]="book.notes"></ion-textarea>
   </ion-item>
 
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block">Done</ion-button>
+  <ion-button expand="block" (click)="addBook()">Add</ion-button>
 </ion-footer>
