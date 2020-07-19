@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      To be read
+      Wish List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,23 +9,20 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">To be read</ion-title>
+      <ion-title size="large">Wish List</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
-        <ion-card (click)="showActionSheet(photo, position)">
-          <ion-img src="{{ photo.base64 ? photo.base64 : photo.webviewPath }}"></ion-img>
-          <ion-card-content class="wrap-text-two-lines" color="dark"></ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list>
+    <div *ngFor="let book of bookService.books; index as position">
+      <ion-item *ngIf="book.status === 'future'" (click)="navigateToBook(position)">
+        <ion-label>{{ book.name }}</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="['/add-book']">
+    <ion-fab-button [routerLink]="['/add-book/future']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

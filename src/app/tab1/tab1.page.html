@@ -12,4 +12,19 @@
       <ion-title size="large">Completed</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <div *ngFor="let book of bookService.books; index as position">
+      <ion-item *ngIf="book.status === 'past'" (click)="navigateToBook(position)">
+        <ion-label>{{ book.name }}</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/add-book/past']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
